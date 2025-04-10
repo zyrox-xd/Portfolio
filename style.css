@@ -1,0 +1,97 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Header */
+  header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav a:hover {
+    background-color: #555;
+    border-radius: 4px;
+  }
+  
+  /* Sections */
+  section {
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    margin: auto;
+    animation: fadeInUp 0.8s ease both;
+  }
+  
+  section:not(:first-of-type) {
+    border-top: 1px solid #ddd;
+    margin-top: 2rem;
+  }
+  
+  /* Headings */
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #222;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 4rem;
+  }
+  
+  /* Smooth Fade Animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+  }
+  
+  
