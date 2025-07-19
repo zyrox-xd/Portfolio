@@ -1,70 +1,624 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shaarif Peshmam | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Shaarif Peshmam | Web Developer & Digital Agency Founder</title>
+    <meta name="description" content="Mohammed Shaarif Peshmam - Crafting clean websites and building brands through web development and digital marketing.">
+    <meta name="keywords" content="web developer, e-commerce, digital agency, Shopify, Odoo, Tailwind CSS">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9', // Light blue accent
+                        secondary: '#22c55e', // Green accent
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.5s ease-in forwards'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #fafafa;
+        }
+        .section {
+            opacity: 0;
+            animation: fade-in 0.5s ease-in forwards;
+        }
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+        .delay-300 {
+            animation-delay: 300ms;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .service-card:hover {
+            transform: scale(1.03);
+        }
+        .nav-active {
+            color: #0ea5e9;
+            position: relative;
+        }
+        .nav-active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #0ea5e9;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #0ea5e9, #22c55e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-grid {
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .canva-icon {
+            background: linear-gradient(135deg, #2cc9c9, #8c3eff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Mobile-first project grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 640px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <div class="container">
-      <h1>Shaarif Peshmam</h1>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<body class="font-sans text-gray-800 bg-grid">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-50 shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">
+                <span class="text-black">Shaarif</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link hover:text-primary transition">Home</a>
+                <a href="#about" class="nav-link hover:text-primary transition">About</a>
+                <a href="#projects" class="nav-link hover:text-primary transition">Projects</a>
+                <a href="#services" class="nav-link hover:text-primary transition">Services</a>
+                <a href="#contact" class="nav-link hover:text-primary transition">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-6 py-4 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link hover:text-primary transition">Home</a>
+                <a href="#about" class="nav-link hover:text-primary transition">About</a>
+                <a href="#projects" class="nav-link hover:text-primary transition">Projects</a>
+                <a href="#services" class="nav-link hover:text-primary transition">Services</a>
+                <a href="#contact" class="nav-link hover:text-primary transition">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-  <section id="home">
-    <div class="container">
-      <h2>Hi, I'm Shaarif </h2>
-      <p>Web Developer | Tech Enthusiast | Constant Learner</p>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
+            <div class="flex flex-col w-full md:w-1/2 justify-center items-start pt-12 pb-24 px-6">
+                <h1 class="font-bold text-4xl md:text-6xl leading-tight mb-4">
+                    Hi, I'm <span class="gradient-text">Shaarif</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 mb-6">
+                    Crafting Clean Code & Building Brands
+                </h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-lg">
+                    I build clean websites, power small businesses online, and co-run Zomaxa, a creative agency.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects" class="px-8 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition duration-300 shadow-lg">
+                        View My Work
+                    </a>
+                    <a href="#contact" class="px-8 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-blue-600 transition duration-300 shadow-lg">
+                        Let's Work Together
+                    </a>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-full opacity-20 blur-3xl animate-pulse"></div>
+                    <div class="relative flex flex-col items-center justify-center">
+                        <div class="bg-gradient-to-br from-gray-100 to-gray-200 border border-gray-300 rounded-2xl w-80 h-80 flex items-center justify-center">
+                            <div class="text-center">
+                                <img src="profie.jpg" alt="Shaarif Profile" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary shadow-lg">
+                                <p class="text-gray-600">Mohammed Shaarif Peshmam</p>
+                                <p class="text-gray-500 mt-2">Web Developer & Entrepreneur</p>
+                            </div>
+                        </div>
+                        <div class="flex mt-8 space-x-4">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fab fa-html5 text-blue-600"></i>
+                            </div>
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fab fa-shopify text-green-600"></i>
+                            </div>
+                            <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
+                                <i class="fab fa-js text-yellow-500"></i>
+                            </div>
+                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-paint-brush text-purple-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="education">
-    <div class="container">
-      <h2>Education</h2>
-      <p>PUC Science at Anjuman Pre-University College</p>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white section delay-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6">My Journey</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        I'm Mohammed Shaarif Peshmam, an 18-year-old entrepreneur and developer. From learning HTML/CSS as a teenager to building real client websites like Shaa Trading and @_cakes_bites, my journey has been fueled by a passion for creating digital experiences that make an impact.
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Today, I combine my technical skills with entrepreneurial vision as the co-founder of Zomaxa, where we help businesses thrive through strategic digital solutions.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        I believe in clean, efficient code and designs that communicate clearly while creating memorable brand experiences.
+                    </p>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6">My Toolkit</h3>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <i class="fab fa-html5 text-4xl text-orange-500 mb-2"></i>
+                            <span class="text-sm font-medium">HTML5</span>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <i class="fab fa-css3-alt text-4xl text-blue-500 mb-2"></i>
+                            <span class="text-sm font-medium">CSS3</span>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <i class="fab fa-js text-4xl text-yellow-500 mb-2"></i>
+                            <span class="text-sm font-medium">JavaScript</span>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NDAgNTAwIj48cGF0aCBmaWxsPSIjMzZCNTlGIiBkPSJNMTI5LjUgMTcxLjVMMCA5NGwyMTQuNSAyNDcuNUw1NDAgOTQgMzk2LjUgMTcxLjUgMzIxIDI0NS41bC0xMDYuNS02MS0xMDYgNjEtNzUuNS03NE0yMTQgMjAybDg1LjUgNDguNUw0MjUgMjAyIDM1MCAxNTJsLTg1LjUgNDkuNUwyMTQgMTUybC04NS41IDUwIi8+PC9zdmc+" alt="Tailwind CSS" class="w-8 h-8 mb-2">
+                            <span class="text-sm font-medium">Tailwind</span>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <i class="fab fa-shopify text-4xl text-green-600 mb-2"></i>
+                            <span class="text-sm font-medium">Shopify</span>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTEuMDMgMTkuOTk0Yy0uMTM0LS4wMDItLjI2Ny0uMDIxLS40LS4wNDItLjE0NS0uMDIzLS4yODktLjA1My0uNDMtLjA5LS4xNDQtLjAzNy0uMjg2LS4wOC0uNDI1LS4xMjYtLjEzOS0uMDQ2LS4yNzYtLjEwMS0uNDEtLjE2LS4xMzUtLjA2LS4yNjctLjEyOC0uMzk1LS4yMDYtLjEyOC0uMDc3LS4yNTMtLjE2Mi0uMzc1LS4yNTUtLjEyMi0uMDkzLS4yNC0uMTkzLS4zNTQtLjMtLjExMy0uMTA3LS4yMjItLjIyLS4zMjYtLjM0LS4xMDQtLjEyLS4yMDMtLjI0Ni0uMjk1LS4zOC0uMDkyLS4xMzQtLjE3OC0uMjczLS4yNTYtLjQxOC0uMDc4LS4xNDUtLjE0OS0uMjk1LS4yMTMtLjQ1LS4wNjMtLjE1NS0uMTE4LS4zMTUtLjE2Ni0uNDgtLjA0OC0uMTY1LS4wODgtLjMzNC0uMTItLjUwNi0uMDMyLS4xNzItLjA1NS0uMzQ2LS4wNy0uNTIzLS4wMTQtLjE3Ny0uMDE4LS4zNTYtLjAxOC0uNTM3IDAtLjE4LjAwNC0uMzYuMDE4LS41MzcuMDE1LS4xNzcuMDM4LS4zNTEuMDctLjUyMy4wMzItLjE3Mi4wNzItLjM0MS4xMi0uNTA2LjA0OC0uMTY1LjEwMy0uMzI1LjE2Ni0uNDguMDY0LS4xNTUuMTM1LS4zMDUuMjEzLS40NS4wNzgtLjE0NS4xNjQtLjI4NC4yNTYtLjQxOC4wOTItLjEzNC4xOTEtLjI2LjI5NS0uMzguMTA0LS4xMi4yMTMtLjIzMy4zMjYtLjM0LjExNC0uMTA3LjIzMi0uMjA3LjM1NC0uMy4xMjItLjA5My4yNDctLjE3OC4zNzUtLjI1NS4xMjgtLjA3OC4yNi0uMTQ2LjM5NS0uMjA2LjEzNC0uMDU5LjI3MS0uMTE0LjQxLS4xNi4xMzktLjA0Ni4yODEtLjA4OS40MjUtLjEyNi4xNDEtLjAzNy4yODUtLjA2Ny40My0uMDkuMTMzLS4wMjEuMjY2LS4wNC40LS4wNDIuMTM0LS4wMDIuMjctLjAwMy40MDQtLjAwMy4xMzQgMCAuMjcuMDAxLjQwNC4wMDNtMi4wMjcgMi4wM2MuMTM0LjAwMi4yNjcuMDIxLjQuMDQyLjE0NS4wMjMuMjg5LjA1My40My4wOS4xNDQuMDM3LjI4Ni4wOC40MjUuMTI2LjEzOS4wNDYuMjc2LjEwMS40MS4xNi4xMzUuMDYuMjY3LjEyOC4zOTUuMjA2LjEyOC4wNzcuMjUzLjE2Mi4zNzUuMjU1LjEyMi4wOTMuMjQuMTkzLjM1NC4zLjExMy4xMDcuMjIyLjIyLjMyNi4zNC4xMDQuMTIuMjAzLjI0Ni4yOTUuMzguMDkyLjEzNC4xNzguMjczLjI1Ni40MTguMDc4LjE0NS4xNDkuMjk1LjIxMy40NS4wNjMuMTU1LjExOC4zMTUuMTY2LjQ4LjA0OC4xNjUuMDg4LjMzNC4xMi41MDYuMDMyLjE3Mi4wNTUuMzQ2LjA3LjUyMy4wMTQuMTc3LjAxOC4zNTYuMDE4LjUzNyAwIC4xOC0uMDA0LjM2LS4wMTguNTM3LS4wMTUuMTc3LS4wMzguMzUxLS4wNy41MjMtLjAzMi4xNzItLjA3Mi4zNDEtLjEyLjUwNi0uMDQ4LjE2NS0uMTAzLjMyNS0uMTY2LjQ4LS4wNjQuMTU1LS4xMzUuMzA1LS4yMTMuNDUtLjA3OC4xNDUtLjE2NC4yODQtLjI1Ni40MTgtLjA5Mi4xMzQtLjE5MS4yNi0uMjk1LjM4LS4xMDQuMTItLjIxMy4yMzMtLjMyNi4zNC0uMTE0LjEwNy0uMjMyLjIwNy0uMzU0LjMtLjEyMi4wOTMtLjI0Ny4xNzgtLjM3NS4yNTUtLjEyOC4wNzgtLjI2LjE0Ni0uMzk1LjIwNi0uMTM0LjA1OS0uMjcxLjExNC0uNDEuMTYtLjEzOS4wNDYtLjI4MS4wODktLjQyNS4xMjYtLjE0MS4wMzctLjI4NS4wNjctLjQzLjA5LS4xMzMuMDIxLS4yNjYuMDQtLjQuMDQyLS4xMzQuMDAyLS4yNy4wMDMtLjQwNC4wMDMtLjEzNCAwLS4yNy0uMDAxLS40MDQtLjAwM20tMi4wMjctMi4wM2MtLjEzNC0uMDAyLS4yNjctLjAyMS0uNC0uMDQyLS4xNDUtLjAyMy0uMjg5LS4wNTMtLjQzLS4wOS0uMTQ0LS4wMzctLjI4Ni0uMDgtLjQyNS0uMTI2LS4xMzktLjA0Ni0uMjc2LS4xMDEtLjQxLS4xNi0uMTM1LS4wNi0uMjY3LS4xMjgtLjM5NS0uMjA2LS4xMjgtLjA3Ny0uMjUzLS4xNjItLjM3NS0uMjU1LS4xMjItLjA5My0uMjQtLjE5My0uMzU0LS4zLS4xMTMtLjEwNy0uMjIyLS4yMi0uMzI2LS4zNC0uMTA0LS4xMi0uMjAzLS4yNDYtLjI5NS0uMzgtLjA5Mi0uMTM0LS4xNzgtLjI3My0uMjU2LS40MTgtLjA3OC0uMTQ1LS4xNDktLjI5NS0uMjEzLS40NS0uMDYzLS4xNTUtLjExOC0uMzE1LS4xNjYtLjQ4LS4wNDgtLjE2NS0uMDg4LS4zMzQtLjEyLS41MDYtLjAzMi0uMTcyLS4wNTUtLjM0Ni0uMDctLjUyMy0uMDE0LS4xNzctLjAxOC0uMzU2LS4wMTgtLjUzNyAwLS4xOC4wMDQtLjM2LjAxOC0uNTM3LjAxNS0uMTc3LjAzOC0uMzUxLjA3LS41MjMuMDMyLS4xNzIuMDcyLS4zNDEuMTItLjUwNi4wNDgtLjE2NS4xMDMtLjMyNS4xNjYtLjQ4LjA2NC0uMTU1LjEzNS0uMzA1LjIxMy0uNDUuMDc4LS4xNDUuMTY0LS4yODQuMjU2LS40MTguMDkyLS4xMzQuMTkxLS4yNi4yOTUtLjM4LjEwNC0uMTIuMjEzLS4yMzMuMzI2LS4zNC4xMTQtLjEwNy4yMzItLjIwNy4zNTQtLjMuMTIyLS4wOTMuMjQ3LS4xNzguMzc1LS4yNTUuMTI4LS4wNzguMjYtLjE0Ni4zOTUtLjIwNi4xMzQtLjA1OS4yNzEtLjExNC40MS0uMTYuMTM5LS4wNDYuMjgxLS4wODkuNDI1LS4xMjYuMTQxLS4wMzcuMjg1LS4wNjcuNDMtLjA5LjEzMy0uMDIxLjI2Ni0uMDQuNC0uMDQyLjEzNC0uMDAyLjI3LS4wMDMuNDA0LS4wMDMuMTM0IDAgLjI3LjAwMS40MDQuMDAzIiBmaWxsPSIjQTA0MkZGIi8+PC9zdmc+" alt="Odoo" class="w-8 h-8 mb-2">
+                            <span class="text-sm font-medium">Odoo</span>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <i class="fab fa-github text-4xl text-gray-800 mb-2"></i>
+                            <span class="text-sm font-medium">GitHub</span>
+                        </div>
+                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <i class="fas fa-palette text-4xl canva-icon mb-2"></i>
+                            <span class="text-sm font-medium">Canva</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="projects">
-    <div class="container">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>Amazon Clone</strong> – Built with HTML & CSS: <a href="https://zyrox-xd.github.io/Amazon-clone/" target="_blank">View Project</a></li>
-      </ul>
-    </div>
-  </section>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50 section delay-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Featured Projects</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Showcase of my professional work combining design aesthetics with technical excellence</p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+            
+            <!-- Mobile-optimized 2x2 grid -->
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-64 bg-gradient-to-br from-pink-50 to-pink-100 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-birthday-cake text-6xl text-pink-500 mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-800">@_cakes_bites</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold">@_cakes_bites Website</h3>
+                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm">Food & Beverage</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Modern, minimal cake store with online ordering system and gallery showcase.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Tailwind</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-64 bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-bullhorn text-6xl text-purple-500 mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-800">Zomaxa</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold">Zomaxa Agency Site</h3>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Digital Agency</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Ongoing SMM & branding business platform with service showcase and client portal.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Tailwind</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">JavaScript</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-64 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-store text-6xl text-blue-500 mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-800">Shaa Trading</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold">Shaa Trading Website</h3>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">E-Commerce</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Custom eCommerce solution for a skincare distributor with inventory management and secure checkout.(Currently under development)
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Shopify</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">JavaScript</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-64 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-store text-6xl text-blue-500 mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-800">Cosmatrix</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold">Cosmatrix Website</h3>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">E-Commerce</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Custom eCommerce solution for a skincare distributor with inventory management and secure checkout.(Currently under development)
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Shopify</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">JavaScript</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Live Preview
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="experience">
-    <div class="container">
-      <h2>Experience</h2>
-      <p>Currently learning full-stack development and working on web clones & real-world projects.</p>
-    </div>
-  </section>
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white section delay-300">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Services Offered</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Comprehensive digital solutions to help your business thrive online</p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 transition-all duration-300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Web Design</h3>
+                    <p class="text-gray-600">
+                        Custom websites built with HTML, CSS, Tailwind, and JavaScript for optimal performance and aesthetics.
+                    </p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 transition-all duration-300">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-palette text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Branding</h3>
+                    <p class="text-gray-600">
+                        Complete brand identity including logos, color palettes, and cohesive website aesthetics.
+                    </p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 transition-all duration-300">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-hashtag text-2xl text-purple-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Social Media Marketing</h3>
+                    <p class="text-gray-600">
+                        Strategic SMM campaigns through Zomaxa to increase engagement and drive conversions.
+                    </p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 transition-all duration-300">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shopping-cart text-2xl text-yellow-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">E-Commerce Setup</h3>
+                    <p class="text-gray-600">
+                        Complete Shopify and Odoo solutions including product upload, UI design, and WhatsApp integration.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Email: <a href="1sha2arif2@gmail.com">1sha2arif2@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/zyrox-xd" target="_blank">zyrox-xd</a></p>
-    </div>
-  </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Have a project in mind? Let's collaborate to bring your vision to life</p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <form class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2" for="name">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2" for="email">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2" for="message">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-lg h-full">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <p class="text-gray-600 mb-8">
+                            Have a project in mind? Want to discuss potential opportunities? Feel free to reach out via WhatsApp for quick responses.
+                        </p>
+                        
+                        <a href="https://wa.me/918904198424" class="flex items-center justify-center bg-green-600 text-white py-3 px-6 rounded-lg mb-8 hover:bg-green-700 transition duration-300">
+                            <i class="fab fa-whatsapp text-xl mr-3"></i> Message on WhatsApp
+                        </a>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-700">Email</h4>
+                                    <p class="text-gray-600">1sha2arif2@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-gray-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-700">Location</h4>
+                                    <p class="text-gray-600">Bangalore, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold text-gray-700 mb-4">Connect with me</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.linkedin.com/in/shaarif-peshmam" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://www.instagram.com/shaarif_peshmam/" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.zomaxa.co/" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-purple-600 hover:text-white transition">
+                                    <i class="fas fa-bullhorn"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Shaarif Peshmam. All rights reserved.</p>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold">
+                        <span class="text-white">Shaarif</span>
+                    </a>
+                    <p class="mt-2 text-gray-400">Crafting Clean Code & Building Brands</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a>
+                    <a href="#services" class="text-gray-400 hover:text-white transition">Services</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Mohammed Shaarif Peshmam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Active nav link based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('nav-active');
+                }
+            });
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
