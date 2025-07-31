@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammed Shaarif Peshmam | Web Developer & Digital Agency Founder</title>
-    <meta name="description" content="Mohammed Shaarif Peshmam - Crafting clean websites and building brands through web development and digital marketing.">
-    <meta name="keywords" content="web developer, e-commerce, digital agency, Shopify, Odoo, Tailwind CSS">
+    <title>Mohammed Shaarif Peshmam | Futuristic Web Developer</title>
+    <meta name="description" content="Mohammed Shaarif Peshmam - Crafting next-gen digital experiences through cutting-edge web development.">
+    <meta name="keywords" content="web developer, futuristic design, digital agency, glassmorphism, neon UI">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0ea5e9', // Light blue accent
-                        secondary: '#22c55e', // Green accent
+                        primary: '#00e5ff', // Futuristic cyan
+                        secondary: '#9d4edd', // Futuristic purple
+                        dark: '#0f0f1b', // Deep space background
+                        card: 'rgba(25, 25, 45, 0.5)' // Glass card background
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        orbitron: ['Orbitron', 'sans-serif']
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
-                        'fade-in': 'fadeIn 0.5s ease-in forwards'
+                        'fade-in': 'fadeIn 0.5s ease-in forwards',
+                        'neon-pulse': 'neonPulse 3s infinite alternate',
+                        'scanline': 'scanline 10s linear infinite'
                     },
                     keyframes: {
                         float: {
@@ -32,6 +37,14 @@
                         fadeIn: {
                             '0%': { opacity: '0' },
                             '100%': { opacity: '1' },
+                        },
+                        neonPulse: {
+                            '0%, 100%': { textShadow: '0 0 5px #00e5ff, 0 0 10px #00e5ff, 0 0 15px #00e5ff' },
+                            '50%': { textShadow: '0 0 10px #00e5ff, 0 0 20px #00e5ff, 0 0 30px #00e5ff' }
+                        },
+                        scanline: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100%)' }
                         }
                     }
                 }
@@ -43,7 +56,12 @@
             scroll-behavior: smooth;
         }
         body {
-            background-color: #fafafa;
+            background-color: #0f0f1b;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(157, 78, 221, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.1) 0%, transparent 20%);
+            color: #e0e0ff;
+            overflow-x: hidden;
         }
         .section {
             opacity: 0;
@@ -58,41 +76,94 @@
         .delay-300 {
             animation-delay: 300ms;
         }
+        .project-card {
+            background: linear-gradient(145deg, rgba(25, 25, 45, 0.7), rgba(15, 15, 27, 0.7));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(157, 78, 221, 0.2);
+            transition: all 0.3s ease;
+        }
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.3);
+            border: 1px solid rgba(0, 229, 255, 0.5);
+        }
+        .service-card {
+            background: linear-gradient(145deg, rgba(25, 25, 45, 0.5), rgba(15, 15, 27, 0.5));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(157, 78, 221, 0.2);
+            transition: all 0.3s ease;
         }
         .service-card:hover {
-            transform: scale(1.03);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(157, 78, 221, 0.3);
+            border: 1px solid rgba(0, 229, 255, 0.5);
         }
         .nav-active {
-            color: #0ea5e9;
-            position: relative;
-        }
-        .nav-active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background-color: #0ea5e9;
+            color: #00e5ff;
+            text-shadow: 0 0 5px #00e5ff;
         }
         .gradient-text {
-            background: linear-gradient(90deg, #0ea5e9, #22c55e);
+            background: linear-gradient(90deg, #00e5ff, #9d4edd);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: neonPulse 3s infinite alternate;
         }
-        .bg-grid {
-            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-            background-size: 20px 20px;
+        .glass-nav {
+            background: rgba(15, 15, 27, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
         }
-        .canva-icon {
-            background: linear-gradient(135deg, #2cc9c9, #8c3eff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-circle {
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, transparent 70%);
+            box-shadow: 0 0 100px rgba(0, 229, 255, 0.2);
+        }
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+        .tech-icon:hover {
+            transform: translateY(-5px);
+            filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.8));
+        }
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(157, 78, 221, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(157, 78, 221, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .scanline-overlay {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanline-overlay::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 229, 255, 0) 0%,
+                rgba(0, 229, 255, 0) 85%,
+                rgba(0, 229, 255, 0.05) 90%,
+                rgba(0, 229, 255, 0) 95%,
+                rgba(0, 229, 255, 0) 100%
+            );
+            animation: scanline 10s linear infinite;
+            pointer-events: none;
+        }
+        .neon-border {
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+        }
+        .neon-border:hover {
+            border: 1px solid rgba(0, 229, 255, 0.6);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+        }
+        .pulse {
+            animation: neonPulse 2s infinite alternate;
         }
         /* Mobile-first project grid */
         .projects-grid {
@@ -109,88 +180,105 @@
         
         @media (min-width: 1024px) {
             .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-grid">
+<body class="font-sans">
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-50 shadow-sm transition-all duration-300">
+    <nav id="navbar" class="fixed w-full glass-nav z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold">
-                <span class="text-black">Shaarif</span>
+                <span class="text-white font-orbitron">SHAARIF</span>
+                <span class="text-primary"></span>
             </a>
             <div class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link hover:text-primary transition">Home</a>
-                <a href="#about" class="nav-link hover:text-primary transition">About</a>
-                <a href="#projects" class="nav-link hover:text-primary transition">Projects</a>
-                <a href="#services" class="nav-link hover:text-primary transition">Services</a>
-                <a href="#contact" class="nav-link hover:text-primary transition">Contact</a>
+                <a href="#home" class="nav-link hover:text-primary transition font-semibold">Home</a>
+                <a href="#about" class="nav-link hover:text-primary transition font-semibold">About</a>
+                <a href="#projects" class="nav-link hover:text-primary transition font-semibold">Projects</a>
+                <a href="#services" class="nav-link hover:text-primary transition font-semibold">Services</a>
+                <a href="#contact" class="nav-link hover:text-primary transition font-semibold">Contact</a>
             </div>
             <div class="md:hidden">
-                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                <button id="menu-toggle" class="text-gray-300 focus:outline-none">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white px-6 py-4 shadow-lg">
+        <div id="mobile-menu" class="hidden md:hidden glass-nav px-6 py-4">
             <div class="flex flex-col space-y-4">
-                <a href="#home" class="nav-link hover:text-primary transition">Home</a>
-                <a href="#about" class="nav-link hover:text-primary transition">About</a>
-                <a href="#projects" class="nav-link hover:text-primary transition">Projects</a>
-                <a href="#services" class="nav-link hover:text-primary transition">Services</a>
-                <a href="#contact" class="nav-link hover:text-primary transition">Contact</a>
+                <a href="#home" class="nav-link hover:text-primary transition font-semibold">Home</a>
+                <a href="#about" class="nav-link hover:text-primary transition font-semibold">About</a>
+                <a href="#projects" class="nav-link hover:text-primary transition font-semibold">Projects</a>
+                <a href="#services" class="nav-link hover:text-primary transition font-semibold">Services</a>
+                <a href="#contact" class="nav-link hover:text-primary transition font-semibold">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center pt-16">
-        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
+    <section id="home" class="min-h-screen flex items-center pt-16 relative overflow-hidden">
+        <!-- Animated grid background -->
+        <div class="absolute inset-0 grid-pattern z-0"></div>
+        
+        <!-- Floating particles -->
+        <div class="absolute top-20 left-1/4 w-3 h-3 bg-primary rounded-full animate-float"></div>
+        <div class="absolute top-1/3 right-1/4 w-2 h-2 bg-secondary rounded-full animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-4 h-4 bg-primary rounded-full animate-float" style="animation-delay: 1s;"></div>
+        
+        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center relative z-10">
             <div class="flex flex-col w-full md:w-1/2 justify-center items-start pt-12 pb-24 px-6">
-                <h1 class="font-bold text-4xl md:text-6xl leading-tight mb-4">
-                    Hi, I'm <span class="gradient-text">Shaarif</span>
+                <div class="mb-6">
+                    <span class="px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">FUTURE-FOCUSED DEVELOPER</span>
+                </div>
+                <h1 class="font-bold text-4xl md:text-6xl leading-tight mb-4 font-orbitron">
+                    <span class="block">BUILDING THE</span>
+                    <span class="gradient-text">DIGITAL FUTURE</span>
                 </h1>
-                <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 mb-6">
-                    Crafting Clean Code & Building Brands
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-300 mb-6">
+                    Crafting next-gen web experiences & digital ecosystems
                 </h2>
-                <p class="text-lg text-gray-600 mb-8 max-w-lg">
-                    I build clean websites, power small businesses online, and co-run Zomaxa, my creative agency.
+                <p class="text-lg text-gray-400 mb-8 max-w-lg">
+                    I architect immersive digital experiences that blend cutting-edge technology with visionary design to propel businesses forward.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#projects" class="px-8 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition duration-300 shadow-lg">
-                        View My Work
+                    <a href="#projects" class="px-8 py-3 bg-primary text-black rounded-lg font-semibold hover:bg-cyan-300 transition duration-300 shadow-lg shadow-primary/30">
+                        <i class="fas fa-laptop-code mr-2"></i> View Projects
                     </a>
-                    <a href="#contact" class="px-8 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-blue-600 transition duration-300 shadow-lg">
-                        Let's Work Together
+                    <a href="#contact" class="px-8 py-3 bg-transparent text-primary rounded-lg font-semibold border border-primary hover:bg-primary/10 transition duration-300">
+                        <i class="fas fa-rocket mr-2"></i> Start Project
                     </a>
                 </div>
             </div>
             <div class="w-full md:w-1/2 flex justify-center">
                 <div class="relative">
-                    <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-full opacity-20 blur-3xl animate-pulse"></div>
-                    <div class="relative flex flex-col items-center justify-center">
-                        <div class="bg-gradient-to-br from-gray-100 to-gray-200 border border-gray-300 rounded-2xl w-80 h-80 flex items-center justify-center">
-                            <div class="text-center">
-                                <img src="profie.jpg" alt="Shaarif Profile" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary shadow-lg">
-                                <p class="text-gray-600">Mohammed Shaarif Peshmam</p>
-                                <p class="text-gray-500 mt-2">Web Developer & Entrepreneur</p>
+                    <div class="hero-circle w-96 h-96 flex items-center justify-center">
+                        <div class="relative flex flex-col items-center justify-center">
+                            <div class="w-72 h-72 bg-gray-900/50 backdrop-blur-md rounded-2xl flex items-center justify-center neon-border">
+                                <div class="text-center">
+                                    <div class="relative inline-block">
+                                        <div class="absolute inset-0 bg-primary rounded-full opacity-20 blur-xl animate-pulse"></div>
+                                        <img src="profie.jpg" alt="Shaarif Profile" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/50 shadow-lg relative z-10">
+                                    </div>
+                                    <p class="text-xl font-semibold mt-4">Mohammed Shaarif Peshmam</p>
+                                    <p class="text-gray-400 mt-2">Web Developer & Tech Entrepreneur</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex mt-8 space-x-4">
-                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                <i class="fab fa-html5 text-blue-600"></i>
-                            </div>
-                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                                <i class="fab fa-shopify text-green-600"></i>
-                            </div>
-                            <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
-                                <i class="fab fa-js text-yellow-500"></i>
-                            </div>
-                            <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-paint-brush text-purple-600"></i>
+                            <div class="flex mt-8 space-x-4">
+                                <div class="tech-icon w-12 h-12 bg-gray-900/50 backdrop-blur-sm rounded-full flex items-center justify-center neon-border">
+                                    <i class="fab fa-html5 text-blue-400 text-xl"></i>
+                                </div>
+                                <div class="tech-icon w-12 h-12 bg-gray-900/50 backdrop-blur-sm rounded-full flex items-center justify-center neon-border">
+                                    <i class="fab fa-shopify text-green-400 text-xl"></i>
+                                </div>
+                                <div class="tech-icon w-12 h-12 bg-gray-900/50 backdrop-blur-sm rounded-full flex items-center justify-center neon-border">
+                                    <i class="fab fa-js text-yellow-400 text-xl"></i>
+                                </div>
+                                <div class="tech-icon w-12 h-12 bg-gray-900/50 backdrop-blur-sm rounded-full flex items-center justify-center neon-border">
+                                    <i class="fab fa-react text-cyan-400 text-xl"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -200,61 +288,66 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white section delay-100">
+    <section id="about" class="py-20 section delay-100 relative">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">About Me</h2>
-                <div class="w-20 h-1 bg-primary mx-auto"></div>
+                <h2 class="text-4xl font-bold mb-4 font-orbitron">ABOUT THE DEVELOPER</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto"></div>
             </div>
             
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/2">
-                    <h3 class="text-2xl font-semibold mb-6">My Journey</h3>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        I'm Mohammed Shaarif Peshmam, an 18-year-old entrepreneur and developer. From learning HTML/CSS as a teenager to building real client websites like Shaa Trading and @_cakes_bites, my journey has been fueled by a passion for creating digital experiences that make an impact.
+                    <h3 class="text-2xl font-semibold mb-6 text-primary">My Digital Evolution</h3>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        I'm Mohammed Shaarif Peshmam, an 18-year-old tech entrepreneur pioneering the future of digital experiences. My journey began with mastering HTML/CSS at 15, evolving into creating sophisticated web solutions for brands like Shaa Trading and @_cakes_bites.
                     </p>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Today, I combine my technical skills with entrepreneurial vision as the Founder of Zomaxa, where we help businesses thrive through strategic digital solutions.
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Today, I merge technical expertise with visionary leadership as Founder of Zomaxa, where we architect digital ecosystems that propel businesses into the future.
                     </p>
-                    <p class="text-gray-600 leading-relaxed">
-                        I believe in clean, efficient code and designs that communicate clearly while creating memorable brand experiences.
+                    <p class="text-gray-300 leading-relaxed">
+                        My philosophy: Clean, efficient code meets immersive experiences. I build digital foundations that evolve with tomorrow's technologies.
                     </p>
+                    <div class="mt-8">
+                        <a href="#contact" class="px-6 py-2 bg-gradient-to-r from-primary to-secondary text-black font-semibold rounded-lg inline-flex items-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Connect With Me
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="md:w-1/2">
-                    <h3 class="text-2xl font-semibold mb-6">My Toolkit</h3>
+                    <h3 class="text-2xl font-semibold mb-6 text-primary">FUTURE-PROOF SKILLSET</h3>
                     <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
-                            <i class="fab fa-html5 text-4xl text-orange-500 mb-2"></i>
+                        <div class="flex flex-col items-center p-4 bg-card backdrop-blur-sm rounded-xl border border-primary/10">
+                            <i class="fab fa-html5 text-4xl text-orange-400 mb-2"></i>
                             <span class="text-sm font-medium">HTML5</span>
                         </div>
-                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
-                            <i class="fab fa-css3-alt text-4xl text-blue-500 mb-2"></i>
+                        <div class="flex flex-col items-center p-4 bg-card backdrop-blur-sm rounded-xl border border-primary/10">
+                            <i class="fab fa-css3-alt text-4xl text-blue-400 mb-2"></i>
                             <span class="text-sm font-medium">CSS3</span>
                         </div>
-                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
-                            <i class="fab fa-js text-4xl text-yellow-500 mb-2"></i>
+                        <div class="flex flex-col items-center p-4 bg-card backdrop-blur-sm rounded-xl border border-primary/10">
+                            <i class="fab fa-js text-4xl text-yellow-400 mb-2"></i>
                             <span class="text-sm font-medium">JavaScript</span>
                         </div>
-                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NDAgNTAwIj48cGF0aCBmaWxsPSIjMzZCNTlGIiBkPSJNMTI5LjUgMTcxLjVMMCA5NGwyMTQuNSAyNDcuNUw1NDAgOTQgMzk2LjUgMTcxLjUgMzIxIDI0NS41bC0xMDYuNS02MS0xMDYgNjEtNzUuNS03NE0yMTQgMjAybDg1LjUgNDguNUw0MjUgMjAyIDM1MCAxNTJsLTg1LjUgNDkuNUwyMTQgMTUybC04NS41IDUwIi8+PC9zdmc+" alt="Tailwind CSS" class="w-8 h-8 mb-2">
-                            <span class="text-sm font-medium">Tailwind</span>
+                        <div class="flex flex-col items-center p-4 bg-card backdrop-blur-sm rounded-xl border border-primary/10">
+                            <i class="fab fa-react text-4xl text-cyan-400 mb-2"></i>
+                            <span class="text-sm font-medium">React</span>
                         </div>
-                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
-                            <i class="fab fa-shopify text-4xl text-green-600 mb-2"></i>
+                        <div class="flex flex-col items-center p-4 bg-card backdrop-blur-sm rounded-xl border border-primary/10">
+                            <i class="fab fa-shopify text-4xl text-green-400 mb-2"></i>
                             <span class="text-sm font-medium">Shopify</span>
                         </div>
-                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTEuMDMgMTkuOTk0Yy0uMTM0LS4wMDItLjI2Ny0uMDIxLS40LS4wNDItLjE0NS0uMDIzLS4yODktLjA1My0uNDMtLjA5LS4xNDQtLjAzNy0uMjg2LS4wOC0uNDI1LS4xMjYtLjEzOS0uMDQ2LS4yNzYtLjEwMS0uNDEtLjE2LS4xMzUtLjA2LS4yNjctLjEyOC0uMzk1LS4yMDYtLjEyOC0uMDc3LS4yNTMtLjE2Mi0uMzc1LS4yNTUtLjEyMi0uMDkzLS4yNC0uMTkzLS4zNTQtLjMtLjExMy0uMTA3LS4yMjItLjIyLS4zMjYtLjM0LS4xMDQtLjEyLS4yMDMtLjI0Ni0uMjk1LS4zOC0uMDkyLS4xMzQtLjE3OC0uMjczLS4yNTYtLjQxOC0uMDc4LS4xNDUtLjE0OS0uMjk1LS4yMTMtLjQ1LS4wNjMtLjE1NS0uMTE4LS4zMTUtLjE2Ni0uNDgtLjA0OC0uMTY1LS4wODgtLjMzNC0uMTItLjUwNi0uMDMyLS4xNzItLjA1NS0uMzQ2LS4wNy0uNTIzLS4wMTQtLjE3Ny0uMDE4LS4zNTYtLjAxOC0uNTM3IDAtLjE4LjAwNC0uMzYuMDE4LS41MzcuMDE1LS4xNzcuMDM4LS4zNTEuMDctLjUyMy4wMzItLjE3Mi4wNzItLjM0MS4xMi0uNTA2LjA0OC0uMTY1LjEwMy0uMzI1LjE2Ni0uNDguMDY0LS4xNTUuMTM1LS4zMDUuMjEzLS40NS4wNzgtLjE0NS4xNjQtLjI4NC4yNTYtLjQxOC4wOTItLjEzNC4xOTEtLjI2LjI5NS0uMzguMTA0LS4xMi4yMTMtLjIzMy4zMjYtLjM0LjExNC0uMTA3LjIzMi0uMjA3LjM1NC0uMy4xMjItLjA5My4yNDctLjE3OC4zNzUtLjI1NS4xMjgtLjA3OC4yNi0uMTQ2LjM5NS0uMjA2LjEzNC0uMDU5LjI3MS0uMTE0LjQxLS4xNi4xMzktLjA0Ni4yODEtLjA4OS40MjUtLjEyNi4xNDEtLjAzNy4yODUtLjA2Ny40My0uMDkuMTMzLS4wMjEuMjY2LS4wNC40LS4wNDIuMTM0LS4wMDIuMjctLjAwMy40MDQtLjAwMy4xMzQgMCAuMjcuMDAxLjQwNC4wMDNtMi4wMjcgMi4wM2MuMTM0LjAwMi4yNjcuMDIxLjQuMDQyLjE0NS4wMjMuMjg5LjA1My40My4wOS4xNDQuMDM3LjI4Ni4wOC40MjUuMTI2LjEzOS4wNDYuMjc2LjEwMS40MS4xNi4xMzUuMDYuMjY3LjEyOC4zOTUuMjA2LjEyOC4wNzcuMjUzLjE2Mi4zNzUuMjU1LjEyMi4wOTMuMjQuMTkzLjM1NC4zLjExMy4xMDcuMjIyLjIyLjMyNi4zNC4xMDQuMTIuMjAzLjI0Ni4yOTUuMzguMDkyLjEzNC4xNzguMjczLjI1Ni40MTguMDc4LjE0NS4xNDkuMjk1LjIxMy40NS4wNjMuMTU1LjExOC4zMTUuMTY2LjQ4LjA0OC4xNjUuMDg4LjMzNC4xMi41MDYuMDMyLjE3Mi4wNTUuMzQ2LjA3LjUyMy4wMTQuMTc3LjAxOC4zNTYuMDE4LjUzNyAwIC4xOC0uMDA0LjM2LS4wMTguNTM3LS4wMTUuMTc3LS4wMzguMzUxLS4wNy41MjMtLjAzMi4xNzItLjA3Mi4zNDEtLjEyLjUwNi0uMDQ4LjE2NS0uMTAzLjMyNS0uMTY2LjQ4LS4wNjQuMTU1LS4xMzUuMzA1LS4yMTMuNDUtLjA3OC4xNDUtLjE2NC4yODQtLjI1Ni40MTgtLjA5Mi4xMzQtLjE5MS4yNi0uMjk1LjM4LS4xMDQuMTItLjIxMy4yMzMtLjMyNi4zNC0uMTE0LjEwNy0uMjMyLjIwNy0uMzU0LjMtLjEyMi4wOTMtLjI0Ny4xNzgtLjM3NS4yNTUtLjEyOC4wNzgtLjI2LjE0Ni0uMzk1LjIwNi0uMTM0LjA1OS0uMjcxLjExNC0uNDEuMTYtLjEzOS4wNDYtLjI4MS4wODktLjQyNS4xMjYtLjE0MS4wMzctLjI4NS4wNjctLjQzLjA5LS4xMzMuMDIxLS4yNjYuMDQtLjQuMDQyLS4xMzQuMDAyLS4yNy4wMDMtLjQwNC4wMDMtLjEzNCAwLS4yNy0uMDAxLS40MDQtLjAwM20tMi4wMjctMi4wM2MtLjEzNC0uMDAyLS4yNjctLjAyMS0uNC0uMDQyLS4xNDUtLjAyMy0uMjg5LS4wNTMtLjQzLS4wOS0uMTQ0LS4wMzctLjI4Ni0uMDgtLjQyNS0uMTI2LS4xMzktLjA0Ni0uMjc2LS4xMDEtLjQxLS4xNi0uMTM1LS4wNi0uMjY3LS4xMjgtLjM5NS0uMjA2LS4xMjgtLjA3Ny0uMjUzLS4xNjItLjM3NS0uMjU1LS4xMjItLjA5My0uMjQtLjE5My0uMzU0LS4zLS4xMTMtLjEwNy0uMjIyLS4yMi0uMzI2LS4zNC0uMTA0LS4xMi0uMjAzLS4yNDYtLjI5NS0uMzgtLjA5Mi0uMTM0LS4xNzgtLjI3My0uMjU2LS40MTgtLjA3OC0uMTQ1LS4xNDktLjI5NS0uMjEzLS40NS0uMDYzLS4xNTUtLjExOC0uMzE1LS4xNjYtLjQ4LS4wNDgtLjE2NS0uMDg4LS4zMzQtLjEyLS41MDYtLjAzMi0uMTcyLS4wNTUtLjM0Ni0uMDctLjUyMy0uMDE0LS4xNzctLjAxOC0uMzU2LS4wMTgtLjUzNyAwLS4xOC4wMDQtLjM2LjAxOC0uNTM3LjAxNS0uMTc3LjAzOC0uMzUxLjA3LS41MjMuMDMyLS4xNzIuMDcyLS4zNDEuMTItLjUwNi4wNDgtLjE2NS4xMDMtLjMyNS4xNjYtLjQ4LjA2NC0uMTU1LjEzNS0uMzA1LjIxMy0uNDUuMDc4LS4xNDUuMTY0LS4yODQuMjU2LS40MTguMDkyLS4xMzQuMTkxLS4yNi4yOTUtLjM4LjEwNC0uMTIuMjEzLS4yMzMuMzI2LS4zNC4xMTQtLjEwNy4yMzItLjIwNy4zNTQtLjMuMTIyLS4wOTMuMjQ3LS4xNzguMzc1LS4yNTUuMTI4LS4wNzguMjYtLjE0Ni4zOTUtLjIwNi4xMzQtLjA1OS4yNzEtLjExNC40MS0uMTYuMTM5LS4wNDYuMjgxLS4wODkuNDI1LS4xMjYuMTQxLS4wMzcuMjg1LS4wNjcuNDMtLjA5LjEzMy0uMDIxLjI2Ni0uMDQuNC0uMDQyLjEzNC0uMDAyLjI3LS4wMDMuNDA0LS4wMDMuMTM0IDAgLjI3LjAwMS40MDQuMDAzIiBmaWxsPSIjQTA0MkZGIi8+PC9zdmc+" alt="Odoo" class="w-8 h-8 mb-2">
-                            <span class="text-sm font-medium">Odoo</span>
+                        <div class="flex flex-col items-center p-4 bg-card backdrop-blur-sm rounded-xl border border-primary/10">
+                            <i class="fab fa-node-js text-4xl text-green-500 mb-2"></i>
+                            <span class="text-sm font-medium">Node.js</span>
                         </div>
-                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
-                            <i class="fab fa-github text-4xl text-gray-800 mb-2"></i>
-                            <span class="text-sm font-medium">GitHub</span>
+                        <div class="flex flex-col items-center p-4 bg-card backdrop-blur-sm rounded-xl border border-primary/10">
+                            <i class="fas fa-database text-4xl text-blue-300 mb-2"></i>
+                            <span class="text-sm font-medium">MongoDB</span>
                         </div>
-                        <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
-                            <i class="fas fa-palette text-4xl canva-icon mb-2"></i>
-                            <span class="text-sm font-medium">Canva</span>
+                        <div class="flex flex-col items-center p-4 bg-card backdrop-blur-sm rounded-xl border border-primary/10">
+                            <i class="fas fa-cloud text-4xl text-blue-200 mb-2"></i>
+                            <span class="text-sm font-medium">Cloud</span>
                         </div>
                     </div>
                 </div>
@@ -262,43 +355,42 @@
         </div>
     </section>
 
-   
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-light section delay-200">
-        <div class="container mx-auto px-6">
+    <section id="projects" class="py-20 section delay-200 relative">
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-dark to-transparent z-0"></div>
+        <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 font-heading">Featured Projects</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Showcase of my professional work combining design aesthetics with technical excellence</p>
-                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+                <h2 class="text-4xl font-bold mb-4 font-orbitron">DIGITAL FRONTIERS</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Showcase of projects pushing the boundaries of web technology</p>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mt-4"></div>
             </div>
             
-            <!-- Mobile-optimized grid -->
             <div class="projects-grid">
                 <!-- Project 1 -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden">
+                <div class="project-card rounded-2xl overflow-hidden scanline-overlay">
                     <div class="relative h-64 overflow-hidden">
-                        <div class="project-image bg-gradient-to-br from-pink-50 to-pink-100 w-full h-full flex items-center justify-center">
+                        <div class="bg-gradient-to-br from-pink-900/30 to-purple-900/30 w-full h-full flex items-center justify-center">
                             <div class="text-center">
-                                <i class="fas fa-birthday-cake text-6xl text-pink-500 mb-4"></i>
-                                <h3 class="text-2xl font-bold text-gray-800">@_cakes_bites</h3>
+                                <i class="fas fa-birthday-cake text-6xl text-pink-400 mb-4 pulse"></i>
+                                <h3 class="text-2xl font-bold text-white">@_cakes_bites</h3>
                             </div>
                         </div>
-                        <span class="project-badge bg-pink-100 text-pink-800">Food & Beverage</span>
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-pink-900/50 text-pink-300 rounded-full text-xs font-semibold backdrop-blur-sm">Food & Beverage</span>
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold">@_cakes_bites Website</h3>
                         </div>
-                        <p class="text-gray-600 mb-4">
-                            Modern, minimal cake store with online ordering system and gallery showcase.
+                        <p class="text-gray-400 mb-4">
+                            Modern, minimal cake store with holographic product visualization and AI-powered ordering.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">HTML/CSS</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">JavaScript</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Tailwind</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">3D Animation</span>
                         </div>
                         <div class="flex gap-4">
-                            <a href="https://zyrox-xd.github.io/cake-bites" target="_blank" class="text-primary font-medium hover:underline flex items-center">
+                            <a href="https://zyrox-xd.github.io/cake-bites" target="_blank" class="text-primary font-medium hover:text-cyan-300 transition flex items-center">
                                 <i class="fas fa-external-link-alt mr-2"></i> Live Preview
                             </a>
                         </div>
@@ -306,30 +398,30 @@
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden">
+                <div class="project-card rounded-2xl overflow-hidden scanline-overlay">
                     <div class="relative h-64 overflow-hidden">
-                        <div class="project-image bg-gradient-to-br from-purple-50 to-purple-100 w-full h-full flex items-center justify-center">
+                        <div class="bg-gradient-to-br from-purple-900/30 to-indigo-900/30 w-full h-full flex items-center justify-center">
                             <div class="text-center">
-                                <i class="fas fa-bullhorn text-6xl text-purple-500 mb-4"></i>
-                                <h3 class="text-2xl font-bold text-gray-800">Zomaxa</h3>
+                                <i class="fas fa-bullhorn text-6xl text-purple-400 mb-4 pulse"></i>
+                                <h3 class="text-2xl font-bold text-white">Zomaxa</h3>
                             </div>
                         </div>
-                        <span class="project-badge bg-purple-100 text-purple-800">Digital Agency</span>
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-xs font-semibold backdrop-blur-sm">Digital Agency</span>
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold">Zomaxa Agency Site</h3>
+                            <h3 class="text-xl font-bold">Zomaxa Agency Portal</h3>
                         </div>
-                        <p class="text-gray-600 mb-4">
-                            Ongoing SMM & branding business platform with service showcase and client portal.
+                        <p class="text-gray-400 mb-4">
+                            AI-enhanced digital agency platform with predictive analytics and client success metrics.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">HTML/CSS</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Tailwind</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">AI Integration</span>
                         </div>
                         <div class="flex gap-4">
-                            <a href="https://www.zomaxa.co/" target="_blank" class="text-primary font-medium hover:underline flex items-center">
+                            <a href="https://www.zomaxa.co/" target="_blank" class="text-primary font-medium hover:text-cyan-300 transition flex items-center">
                                 <i class="fas fa-external-link-alt mr-2"></i> Live Preview
                             </a>
                         </div>
@@ -337,230 +429,265 @@
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden">
+                <div class="project-card rounded-2xl overflow-hidden scanline-overlay">
                     <div class="relative h-64 overflow-hidden">
-                        <div class="project-image bg-gradient-to-br from-blue-50 to-blue-100 w-full h-full flex items-center justify-center">
+                        <div class="bg-gradient-to-br from-blue-900/30 to-cyan-900/30 w-full h-full flex items-center justify-center">
                             <div class="text-center">
-                                <i class="fas fa-store text-6xl text-blue-500 mb-4"></i>
-                                <h3 class="text-2xl font-bold text-gray-800">Shaa Trading</h3>
+                                <i class="fas fa-store text-6xl text-blue-400 mb-4 pulse"></i>
+                                <h3 class="text-2xl font-bold text-white">Shaa Trading</h3>
                             </div>
                         </div>
-                        <span class="project-badge bg-blue-100 text-blue-800">E-Commerce</span>
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-xs font-semibold backdrop-blur-sm">E-Commerce</span>
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold">Shaa Trading Website</h3>
+                            <h3 class="text-xl font-bold">Shaa Trading Platform</h3>
                         </div>
-                        <p class="text-gray-600 mb-4">
-                            Custom eCommerce solution for a skincare distributor with inventory management and secure checkout.
+                        <p class="text-gray-400 mb-4">
+                            Next-gen eCommerce solution with AR product trials and blockchain-powered inventory.
                         </p>
-
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Shopify</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">HTML/CSS</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">Shopify Plus</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">AR Integration</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">Blockchain</span>
                         </div>
                         <div class="flex gap-4">
-                            <a href="#" class="text-primary font-medium hover:underline flex items-center">
-                          Under development
+                            <a href="#" class="text-primary font-medium hover:text-cyan-300 transition flex items-center">
+                                <i class="fas fa-cogs mr-2"></i> In Development
                             </a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- New Project 1: Glowtiqa Paris -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden">
+                <!-- Project 4 -->
+                <div class="project-card rounded-2xl overflow-hidden scanline-overlay">
                     <div class="relative h-64 overflow-hidden">
-                        <div class="project-image bg-gradient-to-br from-indigo-50 to-indigo-100 w-full h-full flex items-center justify-center">
+                        <div class="bg-gradient-to-br from-indigo-900/30 to-violet-900/30 w-full h-full flex items-center justify-center">
                             <div class="text-center">
-                                <i class='fas fa-sun text-6xl text-indigo-500 mb-4'></i>
-                                <h3 class="text-2xl font-bold text-gray-800">Glowtiqa</h3>
+                                <i class='fas fa-sun text-6xl text-indigo-400 mb-4 pulse'></i>
+                                <h3 class="text-2xl font-bold text-white">Glowtiqa</h3>
                             </div>
                         </div>
-                        <span class="project-badge bg-indigo-100 text-indigo-800">Skincare</span>
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-indigo-900/50 text-indigo-300 rounded-full text-xs font-semibold backdrop-blur-sm">Skincare</span>
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold">Glowtiqa Paris </h3>
+                            <h3 class="text-xl font-bold">Glowtiqa Paris Experience</h3>
                         </div>
-                        <p class="text-gray-600 mb-4">
-                            Luxury fashion brand website showcasing their latest collections and online store.
+                        <p class="text-gray-400 mb-4">
+                            Luxury skincare platform with virtual consultations and personalized AI recommendations.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">HTML/CSS</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">AI Engine</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">WebGL</span>
                         </div>
                         <div class="flex gap-4">
-                            <a href="https://glowtiqaparis.com" target="_blank" class="text-primary font-medium hover:underline flex items-center">
+                            <a href="https://glowtiqaparis.com" target="_blank" class="text-primary font-medium hover:text-cyan-300 transition flex items-center">
                                 <i class="fas fa-external-link-alt mr-2"></i> Live Preview
                             </a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- New Project 2: RaafiEdits -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden">
+                <!-- Project 5 -->
+                <div class="project-card rounded-2xl overflow-hidden scanline-overlay">
                     <div class="relative h-64 overflow-hidden">
-                        <div class="project-image bg-gradient-to-br from-amber-50 to-amber-100 w-full h-full flex items-center justify-center">
+                        <div class="bg-gradient-to-br from-amber-900/30 to-orange-900/30 w-full h-full flex items-center justify-center">
                             <div class="text-center">
-                                <i class="fas fa-film text-6xl text-amber-500 mb-4"></i>
-                                <h3 class="text-2xl font-bold text-gray-800">RaafiEdits</h3>
+                                <i class="fas fa-film text-6xl text-amber-400 mb-4 pulse"></i>
+                                <h3 class="text-2xl font-bold text-white">RaafiEdits</h3>
                             </div>
                         </div>
-                        <span class="project-badge bg-amber-100 text-amber-800">Creative</span>
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-amber-900/50 text-amber-300 rounded-full text-xs font-semibold backdrop-blur-sm">Creative</span>
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold">RaafiEdits Portfolio</h3>
+                            <h3 class="text-xl font-bold">RaafiEdits Studio</h3>
                         </div>
-                        <p class="text-gray-600 mb-4">
-                            Video editor's portfolio showcasing reel samples and editing services.
+                        <p class="text-gray-400 mb-4">
+                            Interactive portfolio with real-time editing playground and collaborative features.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">HTML/CSS</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">JavaScript</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Tailwind</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">WebRTC</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">Three.js</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">Collaboration</span>
                         </div>
                         <div class="flex gap-4">
-                            <a href="https://zyrox-xd.github.io/RaafiEdits/" target="_blank" class="text-primary font-medium hover:underline flex items-center">
+                            <a href="https://zyrox-xd.github.io/RaafiEdits/" target="_blank" class="text-primary font-medium hover:text-cyan-300 transition flex items-center">
                                 <i class="fas fa-external-link-alt mr-2"></i> Live Preview
                             </a>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card rounded-2xl overflow-hidden scanline-overlay">
+                    <div class="relative h-64 overflow-hidden">
+                        <div class="bg-gradient-to-br from-green-900/30 to-emerald-900/30 w-full h-full flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-brain text-6xl text-green-400 mb-4 pulse"></i>
+                                <h3 class="text-2xl font-bold text-white">NeuroNex</h3>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-xs font-semibold backdrop-blur-sm">AI Platform</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold">NeuroNex AI Dashboard</h3>
+                        </div>
+                        <p class="text-gray-400 mb-4">
+                            Enterprise AI platform with neural network visualization and predictive analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">TensorFlow.js</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">D3.js</span>
+                            <span class="px-3 py-1 bg-gray-900/50 text-gray-300 rounded-full text-sm">WebGL</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary font-medium hover:text-cyan-300 transition flex items-center">
+                                <i class="fas fa-lock mr-2"></i> Enterprise Access
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-white section delay-300">
-        <div class="container mx-auto px-6">
+    <section id="services" class="py-20 bg-dark/50 section delay-300 relative">
+        <div class="absolute inset-0 bg-grid-pattern z-0 opacity-20"></div>
+        <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Services Offered</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Comprehensive digital solutions to help your business thrive online</p>
-                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+                <h2 class="text-4xl font-bold mb-4 font-orbitron">NEXT-GEN SERVICES</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Digital solutions designed for the future</p>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mt-4"></div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Service 1 -->
-                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 transition-all duration-300">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                <div class="service-card p-8 rounded-xl">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-code text-2xl text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Web Design</h3>
-                    <p class="text-gray-600">
-                        Custom websites built with HTML, CSS, Tailwind, and JavaScript for optimal performance and aesthetics.
+                    <h3 class="text-xl font-bold mb-4">Immersive Web Design</h3>
+                    <p class="text-gray-400">
+                        Next-generation websites with 3D elements, WebGL, and interactive experiences.
                     </p>
                 </div>
                 
                 <!-- Service 2 -->
-                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 transition-all duration-300">
-                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-palette text-2xl text-secondary"></i>
+                <div class="service-card p-8 rounded-xl">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-2xl text-secondary"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Branding</h3>
-                    <p class="text-gray-600">
-                        Complete brand identity including logos, color palettes, and cohesive website aesthetics.
+                    <h3 class="text-xl font-bold mb-4">AI Integration</h3>
+                    <p class="text-gray-400">
+                        Smart systems with machine learning, predictive analytics, and natural language processing.
                     </p>
                 </div>
                 
                 <!-- Service 3 -->
-                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 transition-all duration-300">
-                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-hashtag text-2xl text-purple-500"></i>
+                <div class="service-card p-8 rounded-xl">
+                    <div class="w-16 h-16 bg-purple-500/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-vr-cardboard text-2xl text-purple-400"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Social Media Marketing</h3>
-                    <p class="text-gray-600">
-                        Strategic SMM campaigns through Zomaxa to increase engagement and drive conversions.
+                    <h3 class="text-xl font-bold mb-4">AR/VR Experiences</h3>
+                    <p class="text-gray-400">
+                        Web-based augmented and virtual reality for product visualization and virtual spaces.
                     </p>
                 </div>
                 
                 <!-- Service 4 -->
-                <div class="service-card bg-gray-50 p-8 rounded-xl border border-gray-200 transition-all duration-300">
-                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-shopping-cart text-2xl text-yellow-500"></i>
+                <div class="service-card p-8 rounded-xl">
+                    <div class="w-16 h-16 bg-cyan-500/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-2xl text-cyan-400"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">E-Commerce Setup</h3>
-                    <p class="text-gray-600">
-                        Complete Shopify and Odoo solutions including product upload, UI design, and WhatsApp integration.
+                    <h3 class="text-xl font-bold mb-4">Web3 Solutions</h3>
+                    <p class="text-gray-400">
+                        Blockchain integration, NFT marketplaces, and decentralized application development.
                     </p>
                 </div>
             </div>
         </div>
     </section>
+    
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
+    <section id="contact" class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-dark via-gray-900 to-dark z-0"></div>
+        <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Have a project in mind? Let's collaborate to bring your vision to life</p>
-                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+                <h2 class="text-4xl font-bold mb-4 font-orbitron">CONNECT WITH ME</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Ready to build the future? Let's create something extraordinary together.</p>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mt-4"></div>
             </div>
             
             <div class="flex flex-col lg:flex-row gap-12">
                 <div class="lg:w-1/2">
-                    <form action="https://formspree.io/f/xgvzvjnz" method="POST" class="bg-white p-8 rounded-xl shadow-lg">
-    <div class="mb-6">
-        <label class="block text-gray-700 mb-2" for="name">Name</label>
-        <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-    </div>
-    <div class="mb-6">
-        <label class="block text-gray-700 mb-2" for="email">Email</label>
-        <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-    </div>
-    <div class="mb-6">
-        <label class="block text-gray-700 mb-2" for="message">Message</label>
-        <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-    </div>
-    <button type="submit" class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition duration-300">
-        Send Message
-    </button>
-</form>
+                    <form action="https://formspree.io/f/xgvzvjnz" method="POST" class="glass-card p-8 rounded-xl backdrop-blur-sm">
+                        <div class="mb-6">
+                            <label class="block text-gray-300 mb-2" for="name">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-300 mb-2" for="email">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-300 mb-2" for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-black py-3 rounded-lg font-semibold hover:opacity-90 transition duration-300">
+                            <i class="fas fa-paper-plane mr-2"></i> Send Transmission
+                        </button>
+                    </form>
                 </div>
                 
                 <div class="lg:w-1/2">
-                    <div class="bg-white p-8 rounded-xl shadow-lg h-full">
-                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
-                        <p class="text-gray-600 mb-8">
-                            Have a project in mind? Want to discuss potential opportunities? Feel free to reach out via WhatsApp for quick responses.
+                    <div class="glass-card p-8 rounded-xl backdrop-blur-sm h-full">
+                        <h3 class="text-2xl font-bold mb-6">CONTACT CHANNELS</h3>
+                        <p class="text-gray-400 mb-8">
+                            For immediate connection, reach out via quantum communication channels:
                         </p>
                         
-                        <a href="https://wa.me/918904198424" class="flex items-center justify-center bg-green-600 text-white py-3 px-6 rounded-lg mb-8 hover:bg-green-700 transition duration-300">
-                            <i class="fab fa-whatsapp text-xl mr-3"></i> Message on WhatsApp
+                        <a href="https://wa.me/918904198424" class="flex items-center justify-center bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 px-6 rounded-lg mb-8 hover:opacity-90 transition duration-300">
+                            <i class="fab fa-whatsapp text-xl mr-3"></i> Quantum Message (WhatsApp)
                         </a>
                         
-                        <div class="space-y-4">
+                        <div class="space-y-6">
                             <div class="flex items-center">
-                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-envelope text-blue-600"></i>
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-primary"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-700">Email</h4>
-                                    <p class="text-gray-600"><a href="mailto:1sha2arif2@gmail.com">1sha2arif2@gmail.com</a></p>
+                                    <h4 class="font-bold text-gray-300">Subspace Communication</h4>
+                                    <p class="text-gray-400"><a href="mailto:1sha2arif2@gmail.com" class="hover:text-primary transition">1sha2arif2@gmail.com</a></p>
                                 </div>
                             </div>
                             
                             <div class="flex items-center">
-                                <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-map-marker-alt text-gray-600"></i>
+                                <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-secondary"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-700">Location</h4>
-                                    <p class="text-gray-600">Bangalore, India</p>
+                                    <h4 class="font-bold text-gray-300">Coordinates</h4>
+                                    <p class="text-gray-400">Bangalore, India</p>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="mt-8">
-                            <h4 class="font-bold text-gray-700 mb-4">Connect with me</h4>
+                            <h4 class="font-bold text-gray-300 mb-4">Network Connections</h4>
                             <div class="flex space-x-4">
-                                <a href="https://www.linkedin.com/in/shaarif-peshmam" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition">
-                                    <i class="fab fa-linkedin-in"></i>
+                                <a href="https://www.linkedin.com/in/shaarif-peshmam" class="w-12 h-12 rounded-full bg-gray-900/50 flex items-center justify-center hover:bg-blue-600 transition">
+                                    <i class="fab fa-linkedin-in text-blue-400"></i>
                                 </a>
-                                <a href="https://www.instagram.com/shaarif_peshmam/" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-pink-600 hover:text-white transition">
-                                    <i class="fab fa-instagram"></i>
+                                <a href="https://www.instagram.com/shaarif_peshmam/" class="w-12 h-12 rounded-full bg-gray-900/50 flex items-center justify-center hover:bg-gradient-to-r from-purple-600 to-pink-600 transition">
+                                    <i class="fab fa-instagram text-purple-400"></i>
                                 </a>
-                                <a href="https://www.zomaxa.co/" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-purple-600 hover:text-white transition">
-                                    <i class="fas fa-bullhorn"></i>
+                                <a href="https://www.zomaxa.co/" class="w-12 h-12 rounded-full bg-gray-900/50 flex items-center justify-center hover:bg-gray-800 transition">
+                                    <i class="fas fa-bullhorn text-cyan-400"></i>
                                 </a>
                             </div>
                         </div>
@@ -569,36 +696,38 @@
             </div>
         </div>
     </section>
+    
     <!-- Footer -->
-   <footer class="bg-black text-white py-8">
-    <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0 text-center md:text-left">
-            <a href="#" class="text-2xl font-bold">
-                <span class="text-white">Shaarif</span>
-            </a>
-            <p class="mt-2 text-gray-400">Crafting Clean Code &amp; Building Brands</p>
+    <footer class="bg-black/80 backdrop-blur-lg py-8 border-t border-gray-800">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0 text-center md:text-left">
+                <a href="#" class="text-2xl font-bold">
+                    <span class="text-white font-orbitron">SHAARIF</span>
+                    <span class="text-primary"></span>
+                </a>
+                <p class="mt-2 text-gray-400">Architecting the digital future</p>
+            </div>
+            <nav class="flex flex-wrap justify-center md:justify-end space-x-4 md:space-x-6 mb-4 md:mb-0">
+                <a href="#home" class="text-gray-400 hover:text-primary transition">Home</a>
+                <a href="#about" class="text-gray-400 hover:text-primary transition">About</a>
+                <a href="#projects" class="text-gray-400 hover:text-primary transition">Projects</a>
+                <a href="#services" class="text-gray-400 hover:text-primary transition">Services</a>
+                <a href="#contact" class="text-gray-400 hover:text-primary transition">Contact</a>
+            </nav>
         </div>
-        <nav class="flex flex-wrap justify-center md:justify-end space-x-4 md:space-x-6 mb-4 md:mb-0">
-            <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
-            <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
-            <a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a>
-            <a href="#services" class="text-gray-400 hover:text-white transition">Services</a>
-            <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
-        </nav>
-    </div>
-    <div class="border-t border-gray-800 mt-6 pt-6 text-center text-gray-500 text-sm">
-        &copy; 2025 Mohammed Shaarif Peshmam. All rights reserved.
-    </div>
-</footer>
+        <div class="border-t border-gray-800 mt-6 pt-6 text-center text-gray-500 text-sm">
+            &copy; 2025 Mohammed Shaarif Peshmam. All systems operational.
+        </div>
+    </footer>
 
     <script>
         // Sticky navbar
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md');
+                navbar.classList.add('shadow-lg');
             } else {
-                navbar.classList.remove('shadow-md');
+                navbar.classList.remove('shadow-lg');
             }
         });
 
@@ -652,6 +781,33 @@
             document.querySelectorAll('.section').forEach(section => {
                 observer.observe(section);
             });
+        });
+        
+        // Add particle effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('body');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'absolute rounded-full bg-primary';
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation
+                const animationDuration = Math.random() * 10 + 10;
+                particle.style.animation = `float ${animationDuration}s infinite ease-in-out`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                container.appendChild(particle);
+            }
         });
     </script>
 </body>
